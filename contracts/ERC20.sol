@@ -1,11 +1,11 @@
-pragma solidity 0.5.4;
+pragma solidity ^0.5.4;
 
 contract NFTCoin{ 
 
-string public Name;
-string public Symbol;
-uint8 public Decimal;
-uint256 public TotalSupply;
+string public Name = "NFTCoin";
+string public Symbol = "NFTC";
+uint8 public Decimal = 18;
+uint256 public TotalSupply = 100000000000000000;
 
 //EVENT
 event Transfer(address indexed _from, address indexed _to, uint256 _value);
@@ -15,15 +15,9 @@ event Approval(address indexed _owner, address indexed _spender, uint256 _value)
 mapping (address => uint256) balances;
 mapping (address => mapping(address => uint256)) allowed;
 
-constructor(string memory _name, string memory _symbol, uint8 _decimal, uint256 _totalSupply ) public{
-    Name = _name;
-    Symbol = _symbol;
-    Decimal = _decimal;
-    TotalSupply = _totalSupply;
+constructor() public {
     balances[msg.sender] = TotalSupply;
-
 }
-
 
 function name() public view returns (string memory){
     return Name;
